@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>너의 이름은. (你的名字。) - 한중 언어교환 팬 커뮤니티</title>
+  <style>
+    /* =========================================================
+       1. 기본 스타일 및 리셋 (Base & Reset)
+       ========================================================= */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Malgun Gothic", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #0d1b2a 0%, #1b263b 25%, #415a77 65%, #778da9 100%);
+      color: #333333;
+      min-height: 100vh;
+      padding: 30px 16px 80px 16px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* 모든 주요 제목 아래 붙는 소형 간체자 중국어 번역 스타일 */
+    .sub-trans {
+      display: block;
+      font-size: 0.85rem;
+      color: #e0e1dd;
+      font-weight: normal;
+      margin-top: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    /* =========================================================
+       2. 헤더 섹션 (Header - Twilight & Comet Banner)
+       ========================================================= */
+    header {
+      text-align: center;
+      padding: 36px 20px 30px 20px;
+      background: rgba(13, 27, 42, 0.8);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      margin-bottom: 30px;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #e0a96d 0%, #ee6c4d 100%);
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      letter-spacing: 1px;
+    }
+
+    .main-title {
+      font-size: 2.3rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .main-title .sub-trans {
+      font-size: 1.15rem;
+      color: #fca311;
+      margin-top: 6px;
+    }
+
+    /* 메인 히어로 일러스트 이미지 래퍼 */
+    .hero-artwork {
+      width: 100%;
+      max-width: 820px;
+      margin: 22px auto 16px auto;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-artwork svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .header-slogan {
+      margin-top: 14px;
+      font-size: 1.05rem;
+      color: #e0e1dd;
+      line-height: 1.6;
+    }
+
+    .header-slogan .sub-trans {
+      color: #a3b18c;
+      font-size: 0.9rem;
+    }
+
+    /* =========================================================
+       3. 공통 섹션 스타일 (Section Wrappers)
+       ========================================================= */
+    section {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 32px 24px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 26px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #f0f3f6;
+    }
+
+    .section-title {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: #1b263b;
+    }
+
+    .section-title .sub-trans {
+      color: #6c757d;
+      font-size: 0.9rem;
+      margin-top: 2px;
+    }
+
+    /* =========================================================
+       4. 작품 소개 및 명대사 카드 (Intro & Famous Quotes)
+       ========================================================= */
+    .intro-box {
+      background: #f8f9fa;
+      border-left: 4px solid #ee6c4d;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 26px;
+    }
+
+    .intro-box h3 {
+      font-size: 1.15rem;
+      color: #1b263b;
+      margin-bottom: 6px;
+    }
+
+    .intro-box h3 .sub-trans {
+      color: #6c757d;
+      font-size: 0.85rem;
+    }
+
+    .intro-box p {
+      font-size: 0.95rem;
+      color: #495057;
+      margin-top: 8px;
+    }
+
+    /* 붉은 실(무스비) 테마 일러스트 배너 */
+    .musubi-banner {
+      width: 100%;
+      height: 38px;
+      margin: 16px 0 24px 0;
+      overflow: hidden;
+    }
+
+    .musubi-banner svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .quote-card {
+      background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%);
+      border: 1px solid #e9ecef;
+      border-radius: 12px;
+      padding: 20px 18px;
+      position: relative;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .quote-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(238, 108, 77, 0.15);
+      border-color: #fca311;
+    }
+
+    .quote-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #ee6c4d;
+      background: #ffebe6;
+      padding: 2px 10px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .quote-ko {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #2b2d42;
+      line-height: 1.5;
+    }
+
+    .quote-zh {
+      font-size: 0.88rem;
+      color: #555b6e;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed #dee2e6;
+      line-height: 1.5;
+    }
+
+    /* =========================================================
+       5. 등장인물 카드 및 캐릭터 일러스트 (Characters)
+       ========================================================= */
+    .character-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .character-card {
+      background: #ffffff;
+      border: 2px solid #edf2f4;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .character-card.taki {
+      border-top: 6px solid #3d5a80;
+    }
+
+    .character-card.mitsuha {
+      border-top: 6px solid #ee6c4d;
+    }
+
+    .character-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+    }
+
+    /* 캐릭터 일러스트 배너 */
+    .character-visual {
+      width: 100%;
+      height: 140px;
+      background-color: #1b263b;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .character-visual svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .character-body {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .character-header {
+      margin-bottom: 12px;
+    }
+
+    .character-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #1b263b;
+    }
+
+    .character-name .sub-trans {
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+
+    .character-desc {
+      font-size: 0.92rem;
+      color: #495057;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .character-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+      padding-top: 10px;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      background: #edf2f4;
+      color: #2b2d42;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    /* =========================================================
+       6. 주요 배경지 섹션 및 풍경 일러스트 (Key Locations)
+       ========================================================= */
+    .location-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .location-card {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    /* 배경지 풍경 일러스트 */
+    .location-visual {
+      width: 100%;
+      height: 160px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .location-visual svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .location-body {
+      padding: 20px;
+    }
+
+    .location-card h3 {
+      font-size: 1.2rem;
+      color: #1b263b;
+      margin-bottom: 4px;
+    }
+
+    .location-card h3 .sub-trans {
+      color: #6c757d;
+      font-size: 0.88rem;
+    }
+
+    .location-desc {
+      font-size: 0.92rem;
+      color: #495057;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .location-highlights {
+      margin-top: 12px;
+      padding-left: 18px;
+      font-size: 0.88rem;
+      color: #2b2d42;
+    }
+
+    .location-highlights li {
+      margin-bottom: 4px;
+    }
+
+    /* =========================================================
+       7. 하단 가입 문의 & 알림 버튼 (Footer & Button)
+       ========================================================= */
+    footer {
+      background: rgba(13, 27, 42, 0.85);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 40px 20px;
+      text-align: center;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .footer-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .footer-title .sub-trans {
+      color: #fca311;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .footer-desc {
+      font-size: 0.95rem;
+      color: #e0e1dd;
+      max-width: 600px;
+      margin: 0 auto 24px auto;
+      line-height: 1.6;
+    }
+
+    .inquiry-btn {
+      background: linear-gradient(135deg, #ee6c4d 0%, #fca311 100%);
+      color: #ffffff;
+      border: none;
+      padding: 16px 34px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(238, 108, 77, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+      letter-spacing: 0.3px;
+    }
+
+    .inquiry-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(238, 108, 77, 0.55);
+      filter: brightness(1.05);
+    }
+
+    .inquiry-btn:active {
+      transform: translateY(0);
+    }
+
+    .inquiry-btn .btn-trans {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: normal;
+      margin-left: 6px;
+      opacity: 0.95;
+    }
+
+    .modal-feedback {
+      margin-top: 20px;
+      font-size: 0.88rem;
+      color: #a3b18c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- =========================================================
+         1. 헤더 (Header & 황혼의 혜성 아트워크)
+         ========================================================= -->
+    <header>
+      <span class="header-badge">한-중 언어교환 & 문화 팬클럽 / 中韩语言交流粉丝社群</span>
+      <h1 class="main-title">
+        너의 이름은.
+        <span class="sub-trans">你的名字。 (Your Name.)</span>
+      </h1>
+
+      <!-- [작품 메인 아트워크: 황혼의 하늘과 티아마트 혜성] -->
+      <div class="hero-artwork" title="황혼의 시간과 둘로 갈라지는 티아마트 혜성 (逢魔之时的天空与迪亚马特彗星)">
+        <svg viewBox="0 0 800 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="너의 이름은 황혼 하늘과 혜성 일러스트">
+          <defs>
+            <!-- 황혼 하늘 그라데이션 -->
+            <linearGradient id="twilightSky" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#0a1128" />
+              <stop offset="35%" stop-color="#1c2541" />
+              <stop offset="65%" stop-color="#474973" />
+              <stop offset="85%" stop-color="#ee6c4d" />
+              <stop offset="100%" stop-color="#fca311" />
+            </linearGradient>
+            <!-- 혜성 본체 빛 그라데이션 -->
+            <linearGradient id="cometMainGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="25%" stop-color="#a0e7e5" />
+              <stop offset="60%" stop-color="#7209b7" />
+              <stop offset="100%" stop-color="transparent" />
+            </linearGradient>
+            <!-- 분열된 혜성 파편 그라데이션 -->
+            <linearGradient id="cometSubGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="30%" stop-color="#f72585" />
+              <stop offset="70%" stop-color="#b5179e" />
+              <stop offset="100%" stop-color="transparent" />
+            </linearGradient>
+          </defs>
+
+          <!-- 1. 하늘 배경 -->
+          <rect width="800" height="240" fill="url(#twilightSky)" />
+
+          <!-- 2. 반짝이는 별무리 (Night Stars) -->
+          <g fill="#ffffff" opacity="0.8">
+            <circle cx="60" cy="30" r="1.2" />
+            <circle cx="120" cy="50" r="0.8" />
+            <circle cx="210" cy="25" r="1.5" />
+            <circle cx="280" cy="70" r="0.9" />
+            <circle cx="340" cy="40" r="1.3" />
+            <circle cx="430" cy="20" r="1.1" />
+            <circle cx="520" cy="65" r="1.4" />
+            <circle cx="590" cy="35" r="0.8" />
+            <circle cx="670" cy="55" r="1.2" />
+            <circle cx="730" cy="30" r="1.6" />
+            <circle cx="770" cy="80" r="1.0" />
+            <circle cx="150" cy="90" r="0.7" opacity="0.5" />
+            <circle cx="620" cy="85" r="0.9" opacity="0.6" />
+          </g>
+
+          <!-- 3. 메인 혜성(티아마트 혜성) 줄기 -->
+          <path d="M 600,10 Q 420,80 240,165" stroke="url(#cometMainGlow)" stroke-width="5" fill="none" stroke-linecap="round" />
+          <path d="M 590,12 Q 410,82 250,163" stroke="rgba(255,255,255,0.7)" stroke-width="1.8" fill="none" />
+          <!-- 혜성 핵(광원) -->
+          <circle cx="240" cy="165" r="5" fill="#ffffff" />
+          <circle cx="240" cy="165" r="12" fill="#a0e7e5" opacity="0.4" />
+
+          <!-- 4. 둘로 갈라지는 분열 혜성 궤적 -->
+          <path d="M 460,65 Q 380,110 320,185" stroke="url(#cometSubGlow)" stroke-width="3" fill="none" stroke-linecap="round" />
+          <circle cx="320" cy="185" r="3.5" fill="#ffffff" />
+          <circle cx="320" cy="185" r="9" fill="#f72585" opacity="0.4" />
+
+          <!-- 5. 원경 산등성이 실루엣 (Mountains) -->
+          <path d="M 0,240 L 0,205 Q 120,185 240,200 Q 380,180 500,205 Q 650,175 800,210 L 800,240 Z" fill="#0d1b2a" opacity="0.85" />
+          <path d="M 0,240 L 0,215 Q 180,205 340,225 Q 520,195 720,225 L 800,220 L 800,240 Z" fill="#070d19" />
+        </svg>
+      </div>
+
+      <div class="header-slogan">
+        <p>"아직 만난 적 없는 너를, 언어를 넘어 함께 찾아갑니다."</p>
+        <span class="sub-trans">“跨越语言的阻隔，寻找未曾谋面的你。”</span>
+      </div>
+    </header>
+
+    <main>
+      <!-- =======================================================
+           2. 작품 소개 & 명대사 카드 (Intro & Famous Quotes)
+           ======================================================= -->
+      <section>
+        <div class="section-header section-title-wrap">
+          <h2 class="section-title">
+            작품 소개 및 명대사
+            <span class="sub-trans">作品介绍与经典台词</span>
+          </h2>
+        </div>
+
+        <!-- 작품 소개 카드 -->
+        <div class="intro-box">
+          <h3>
+            작품 개요
+            <span class="sub-trans">作品概况</span>
+          </h3>
+          <p>
+            신카이 마코토(新海誠) 감독의 대표 애니메이션 영화로, 도쿄에 사는 소년 '타키'와 시골 마을 이토모리에 사는 소녀 '미츠하'가 꿈속에서 서로 몸이 바뀌며 시공간을 초월해 서로를 찾아가는 감동적인 이야기입니다.
+          </p>
+          <p style="color: #6c757d; font-size: 0.88rem; margin-top: 6px;">
+            新海诚执导的代表性动画电影，讲述了生活在东京的少年“泷”与生活在乡间小镇糸守町的少女“三叶”，在梦中互换身体并跨越时空寻找彼此的动人故事。
+          </p>
+        </div>
+
+        <!-- 붉은 실 (무스비 / 结绳) 디자인 브릿지 배너 -->
+        <div class="musubi-banner" title="인연을 잇는 붉은 실 무스비 (连接缘分的红绳 MUSUBI)">
+          <svg viewBox="0 0 800 36" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,18 C 150,-5 250,40 400,18 C 550,-5 650,40 800,18" stroke="#ee6c4d" stroke-width="2.5" fill="none" stroke-linecap="round" />
+            <path d="M 0,18 C 150,40 250,-5 400,18 C 550,40 650,-5 800,18" stroke="#fca311" stroke-width="1.2" fill="none" opacity="0.6" stroke-dasharray="4,4" />
+            <circle cx="400" cy="18" r="4.5" fill="#ee6c4d" />
+            <circle cx="400" cy="18" r="8" fill="#ee6c4d" opacity="0.25" />
+          </svg>
+        </div>
+
+        <!-- 명대사 카드 그리드 -->
+        <div class="quotes-grid">
+          <!-- 명대사 1 -->
+          <div class="quote-card">
+            <span class="quote-badge">명대사 01 / 经典台词 01</span>
+            <p class="quote-ko">"아직 만난 적 없는 너를, 찾고 있어."</p>
+            <p class="quote-zh">"我正在寻找，未曾谋面的你。"</p>
+          </div>
+
+          <!-- 명대사 2 -->
+          <div class="quote-card">
+            <span class="quote-badge">명대사 02 / 经典台词 02</span>
+            <p class="quote-ko">"잊고 싶지 않은 사람, 잊으면 안 되는 사람. 너의 이름은?"</p>
+            <p class="quote-zh">"不想忘记的人，不能忘记的人。你的名字是？"</p>
+          </div>
+
+          <!-- 명대사 3 -->
+          <div class="quote-card">
+            <span class="quote-badge">명대사 03 / 经典台词 03</span>
+            <p class="quote-ko">"아침에 눈을 뜨면, 왠지 모르게 눈물이 흐를 때가 있다."</p>
+            <p class="quote-zh">"早晨醒来的时候，不知为何总会流下眼泪。"</p>
+          </div>
+
+          <!-- 명대사 4 -->
+          <div class="quote-card">
+            <span class="quote-badge">명대사 04 / 经典台词 04</span>
+            <p class="quote-ko">"무스비(結び). 실을 잇는 것도 무스비, 사람을 잇는 것도 무스비, 시간의 흐름도 무스비란다."</p>
+            <p class="quote-zh">"结（MUSUBI）。连接线是结，连接人与人也是结，时间的流动同样是结。"</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+           3. 등장인물 소개 & 캐릭터 일러스트 (2 Characters)
+           ======================================================= -->
+      <section>
+        <div class="section-header section-title-wrap">
+          <h2 class="section-title">
+            주요 등장인물
+            <span class="sub-trans">主要登场角色</span>
+          </h2>
+        </div>
+
+        <div class="character-grid">
+          <!-- 캐릭터 1: 타키 -->
+          <div class="character-card taki">
+            <!-- 타키 시각 일러스트 (도쿄 대도시 & 건축 소년 테마) -->
+            <div class="character-visual" title="타치바나 타키 일러스트 (立花泷 角色插画)">
+              <svg viewBox="0 0 380 140" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="takiBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#1d2d44" />
+                    <stop offset="100%" stop-color="#3d5a80" />
+                  </linearGradient>
+                </defs>
+                <rect width="380" height="140" fill="url(#takiBg)" />
+                <!-- 건축 격자/청사진 라인 -->
+                <line x1="20" y1="0" x2="20" y2="140" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+                <line x1="70" y1="0" x2="70" y2="140" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+                <line x1="120" y1="0" x2="120" y2="140" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+                <!-- 배경 도쿄 빌딩 윤곽선 -->
+                <rect x="220" y="40" width="35" height="100" fill="#0d1b2a" opacity="0.6" />
+                <rect x="260" y="25" width="40" height="115" fill="#0d1b2a" opacity="0.75" />
+                <rect x="305" y="50" width="30" height="90" fill="#0d1b2a" opacity="0.5" />
+                <rect x="340" y="30" width="35" height="110" fill="#0d1b2a" opacity="0.7" />
+                <!-- 타키 소년 실루엣 & 넥타이 -->
+                <circle cx="85" cy="50" r="22" fill="#ffffff" opacity="0.9" />
+                <path d="M 50,140 C 50,95 70,80 85,80 C 100,80 120,95 120,140 Z" fill="#ffffff" opacity="0.9" />
+                <!-- 파란색 교복 넥타이 포인트 -->
+                <polygon points="85,82 82,108 85,116 88,108" fill="#3d5a80" />
+                <text x="140" y="75" fill="#ffffff" font-size="14" font-weight="700" letter-spacing="1">TAKI TACHIBANA</text>
+                <text x="140" y="95" fill="#a0c4e2" font-size="12">도쿄의 남고생 / 东京的高中生</text>
+              </svg>
+            </div>
+
+            <div class="character-body">
+              <div class="character-header">
+                <h3 class="character-name">
+                  타치바나 타키
+                  <span class="sub-trans">立花 泷 (Tachibana Taki)</span>
+                </h3>
+              </div>
+              <p class="character-desc">
+                도쿄 도심에 거주하는 남고생입니다. 방과 후 이탈리안 레스토랑에서 아르바이트를 하며 친구들과 활기차게 지냅니다. 건축과 미술에 관심이 많으며 솔직하고 의리 넘치는 성격입니다.
+              </p>
+              <p class="character-desc" style="color: #6c757d; font-size: 0.85rem;">
+                生活在东京市中心的男高中生。放学后在意大利餐厅打工，与朋友们共度充实日常。热衷于建筑与美术，性格坦率且重情重义。
+              </p>
+              <div class="character-tags">
+                <span class="tag">#도쿄 남고생 (东京高中生)</span>
+                <span class="tag">#건축 지망 (建筑志愿)</span>
+                <span class="tag">#레스토랑 알바 (餐厅兼职)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 캐릭터 2: 미츠하 -->
+          <div class="character-card mitsuha">
+            <!-- 미츠하 시각 일러스트 (붉은 끈 리본 & 신사 소녀 테마) -->
+            <div class="character-visual" title="미야미즈 미츠하 일러스트 (宫水三叶 角色插画)">
+              <svg viewBox="0 0 380 140" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="mitsuhaBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#4a154b" />
+                    <stop offset="100%" stop-color="#ee6c4d" />
+                  </linearGradient>
+                </defs>
+                <rect width="380" height="140" fill="url(#mitsuhaBg)" />
+                <!-- 밤하늘 별무리 효과 -->
+                <circle cx="40" cy="25" r="1" fill="#fff" opacity="0.8" />
+                <circle cx="160" cy="30" r="1.2" fill="#fff" opacity="0.7" />
+                <circle cx="210" cy="18" r="1" fill="#fff" opacity="0.9" />
+                <!-- 붉은 매듭 끈(쿠미히모) 곡선 -->
+                <path d="M 0,110 Q 140,40 240,110 T 380,60" stroke="#fca311" stroke-width="2" fill="none" opacity="0.5" />
+                <path d="M 0,90 Q 160,130 280,50 T 380,90" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.4" />
+                <!-- 미츠하 소녀 실루엣 & 붉은 리본 헤어 -->
+                <circle cx="85" cy="50" r="22" fill="#ffffff" opacity="0.9" />
+                <path d="M 50,140 C 50,95 70,80 85,80 C 100,80 120,95 120,140 Z" fill="#ffffff" opacity="0.9" />
+                <!-- 붉은 리본 포인트 -->
+                <circle cx="70" cy="46" r="4.5" fill="#ee6c4d" />
+                <path d="M 68,48 Q 62,60 58,72" stroke="#ee6c4d" stroke-width="2.5" fill="none" />
+                <path d="M 72,48 Q 74,62 76,74" stroke="#ee6c4d" stroke-width="2.5" fill="none" />
+                <text x="140" y="75" fill="#ffffff" font-size="14" font-weight="700" letter-spacing="1">MITSUHA MIYAMIZU</text>
+                <text x="140" y="95" fill="#ffd166" font-size="12">이토모리의 여고생 / 糸守町的高中生</text>
+              </svg>
+            </div>
+
+            <div class="character-body">
+              <div class="character-header">
+                <h3 class="character-name">
+                  미야미즈 미츠하
+                  <span class="sub-trans">宫水 三叶 (Miyamizu Mitsuha)</span>
+                </h3>
+              </div>
+              <p class="character-desc">
+                산 깊은 시골 마을 '이토모리'에 사는 여고생입니다. 유서 깊은 미야미즈 신사의 가업을 잇고 있으며, 답답한 시골을 벗어나 반짝이는 도쿄의 도시 생활을 간절히 동경합니다.
+              </p>
+              <p class="character-desc" style="color: #6c757d; font-size: 0.85rem;">
+                生活在深山小镇“糸守町”的女高中生。担任历史悠久的宫水神社巫女，渴望挣脱闭塞的乡村环境，对繁华的东京大都市满怀憧憬。
+              </p>
+              <div class="character-tags">
+                <span class="tag">#이토모리 여고생 (糸守町高中生)</span>
+                <span class="tag">#미야미즈 신사 (宫水神社)</span>
+                <span class="tag">#도쿄 동경 (向往东京)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+           4. 주요 배경지 섹션 & 풍경 일러스트 (Key Locations)
+           ======================================================= -->
+      <section>
+        <div class="section-header section-title-wrap">
+          <h2 class="section-title">
+            작품의 주요 배경지
+            <span class="sub-trans">主要取景背景地</span>
+          </h2>
+        </div>
+
+        <div class="location-grid">
+          <!-- 배경지 1: 도쿄 -->
+          <div class="location-card">
+            <!-- 도쿄 도시 풍경 일러스트 -->
+            <div class="location-visual" title="도쿄 신주쿠 도심 및 육교 일러스트 (东京新宿街景与天桥插画)">
+              <svg viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="tokyoSunset" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#2b2d42" />
+                    <stop offset="50%" stop-color="#d90429" />
+                    <stop offset="85%" stop-color="#fca311" />
+                    <stop offset="100%" stop-color="#ffdda1" />
+                  </linearGradient>
+                </defs>
+                <rect width="380" height="160" fill="url(#tokyoSunset)" />
+                <!-- 빌딩 실루엣 원경 -->
+                <rect x="20" y="50" width="30" height="110" fill="#1b263b" opacity="0.6" />
+                <rect x="60" y="30" width="45" height="130" fill="#1b263b" opacity="0.8" />
+                <rect x="115" y="65" width="28" height="95" fill="#1b263b" opacity="0.5" />
+                <rect x="150" y="20" width="55" height="140" fill="#0d1b2a" />
+                <!-- 통신탑 안테나 -->
+                <line x1="177" y1="5" x2="177" y2="20" stroke="#fca311" stroke-width="2" />
+                <rect x="215" y="45" width="38" height="115" fill="#1b263b" opacity="0.75" />
+                <rect x="260" y="70" width="45" height="90" fill="#1b263b" opacity="0.6" />
+                <rect x="315" y="35" width="45" height="125" fill="#0d1b2a" opacity="0.9" />
+                <!-- 빌딩 창문 불빛 점들 -->
+                <g fill="#ffd166" opacity="0.75">
+                  <rect x="70" y="45" width="4" height="4" />
+                  <rect x="85" y="60" width="4" height="4" />
+                  <rect x="160" y="35" width="5" height="5" />
+                  <rect x="175" y="55" width="5" height="5" />
+                  <rect x="165" y="80" width="5" height="5" />
+                  <rect x="225" y="65" width="4" height="4" />
+                  <rect x="325" y="50" width="4" height="4" />
+                </g>
+                <!-- 신주쿠 보행자 육교 실루엣 -->
+                <rect x="0" y="130" width="380" height="14" fill="#080e18" />
+                <line x1="0" y1="124" x2="380" y2="124" stroke="#fca311" stroke-width="1.5" opacity="0.8" />
+                <rect x="80" y="144" width="12" height="16" fill="#080e18" />
+                <rect x="280" y="144" width="12" height="16" fill="#080e18" />
+              </svg>
+            </div>
+
+            <div class="location-body">
+              <h3>
+                도쿄 (Tokyo)
+                <span class="sub-trans">东京 (都市舞台)</span>
+              </h3>
+              <p class="location-desc">
+                타키의 일상이 펼쳐지는 활기찬 현대 대도시입니다. 마천루와 바쁜 출퇴근 전철, 세련된 카페와 육교가 교차하는 감각적인 도시 풍경을 정밀하게 담아냈습니다.
+              </p>
+              <p style="color: #6c757d; font-size: 0.85rem; margin-top: 6px;">
+                泷日常生活所在的现代繁华大都市。影片细腻刻画了摩天大楼、电车交通、街角咖啡馆以及标志性的人行天桥。
+              </p>
+              <ul class="location-highlights">
+                <li>신주쿠역 육교 및 거리 (新宿站天桥与街景)</li>
+                <li>스가 신사 앞 계단 (须贺神社前台阶 - 마지막 재회 장소)</li>
+                <li>롯폰기 힐즈 전망대 (六本木新城展望台)</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 배경지 2: 이토모리 -->
+          <div class="location-card">
+            <!-- 이토모리 호수 & 산 풍경 일러스트 -->
+            <div class="location-visual" title="이토모리 분화구 호수 및 신사 숲 일러스트 (糸守町火山口湖与神社森林插画)">
+              <svg viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="itomoriNight" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#050c1a" />
+                    <stop offset="45%" stop-color="#14213d" />
+                    <stop offset="75%" stop-color="#2a6f97" />
+                    <stop offset="100%" stop-color="#468faf" />
+                  </linearGradient>
+                  <linearGradient id="lakeGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#61a5c2" />
+                    <stop offset="100%" stop-color="#012a4a" />
+                  </linearGradient>
+                </defs>
+                <rect width="380" height="160" fill="url(#itomoriNight)" />
+                <!-- 밤하늘 별무리 -->
+                <circle cx="50" cy="20" r="1.2" fill="#ffffff" />
+                <circle cx="110" cy="35" r="0.9" fill="#ffffff" />
+                <circle cx="210" cy="18" r="1.3" fill="#ffffff" />
+                <circle cx="310" cy="28" r="1.0" fill="#ffffff" />
+                <circle cx="340" cy="45" r="0.7" fill="#ffffff" />
+                <!-- 혜성의 흔적 빛 -->
+                <path d="M 280,10 Q 200,35 120,70" stroke="rgba(247,37,133,0.6)" stroke-width="2" fill="none" />
+                <!-- 분화구 산등성이 (양옆 산) -->
+                <path d="M 0,160 L 0,85 Q 90,60 190,105 Q 290,60 380,85 L 380,160 Z" fill="#0b132b" />
+                <!-- 이토모리 원형 호수 (수면 반사) -->
+                <ellipse cx="190" cy="125" rx="140" ry="32" fill="url(#lakeGlow)" opacity="0.9" />
+                <ellipse cx="190" cy="122" rx="90" ry="16" fill="#a9d6e5" opacity="0.35" />
+                <!-- 호숫가 작은 숲과 신사 도리이 실루엣 -->
+                <polygon points="50,110 56,125 44,125" fill="#070c18" />
+                <polygon points="62,105 70,122 54,122" fill="#070c18" />
+                <polygon points="325,108 333,124 317,124" fill="#070c18" />
+                <!-- 호숫가 붉은 도리이 (Torii Gate) -->
+                <rect x="290" y="112" width="2" height="10" fill="#ee6c4d" />
+                <rect x="298" y="112" width="2" height="10" fill="#ee6c4d" />
+                <rect x="288" y="113" width="14" height="2" fill="#ee6c4d" />
+              </svg>
+            </div>
+
+            <div class="location-body">
+              <h3>
+                이토모리 (Itomori)
+                <span class="sub-trans">糸守町 (乡村舞台)</span>
+              </h3>
+              <p class="location-desc">
+                미츠하가 살아가는 기후현 산골 마을입니다. 거대한 분화구 호수와 울창한 숲, 신비로운 전설과 전통 매듭(쿠미히모) 공예가 살아 숨 쉬는 서정적인 고향입니다.
+              </p>
+              <p style="color: #6c757d; font-size: 0.85rem; margin-top: 6px;">
+                三叶生长的岐阜县深山小镇。静谧的大型火山口湖泊、茂密森林以及神秘古老的结绳传统手艺，构成了如诗如画的梦幻乡景。
+              </p>
+              <ul class="location-highlights">
+                <li>이토모리 호수 (糸守湖 - 작중 중심 공간)</li>
+                <li>미야미즈 신사 고목 및 제단 (宫水神社与神体山顶)</li>
+                <li>황혼의 시간(카타와레도키)의 분화구 능선 (逢魔之时的火山口山脊)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =========================================================
+         5. 하단 팬 커뮤니티 가입 문의 버튼 & 알림창 인터랙션
+         ========================================================= -->
+    <footer>
+      <h2 class="footer-title">
+        팬 커뮤니티 가입 안내
+        <span class="sub-trans">粉丝社群加入指南</span>
+      </h2>
+      <p class="footer-desc">
+        한국과 중국의 '너의 이름은.' 팬들과 함께 명대사로 언어를 배우고 다양한 문화 활동에 참여해 보세요!
+        <br>
+        <span style="color: #a3b18c; font-size: 0.85rem;">
+          欢迎中韩两国的《你的名字。》影迷一起通过经典台词交流语言，参与丰富文化活动！
+        </span>
+      </p>
+
+      <!-- 가입 문의 버튼 -->
+      <button id="inquiryBtn" class="inquiry-btn" type="button">
+        팬 커뮤니티 가입 문의 <span class="btn-trans">(粉丝社群加入咨询)</span>
+      </button>
+
+      <p class="modal-feedback">
+        ※ 버튼을 클릭하면 문의 안내 알림창이 나타납니다. (点击按钮弹出咨询提示框)
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- =========================================================
+       6. 인터랙션 스크립트 (JavaScript)
+       ========================================================= -->
+  <script>
+    // 문서 로드 완료 후 버튼 클릭 이벤트 리스너 등록
+    document.addEventListener('DOMContentLoaded', function () {
+      var inquiryBtn = document.getElementById('inquiryBtn');
+
+      if (inquiryBtn) {
+        inquiryBtn.addEventListener('click', function () {
+          // 브라우저 기본 알림창(alert) 팝업 실행
+          var alertMessage = "가입 문의는 동호회 회장에게 전달해 주세요. / 入会咨询请联系社长。";
+          window.alert(alertMessage);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
